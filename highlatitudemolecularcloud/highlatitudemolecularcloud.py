@@ -4,9 +4,9 @@ import numpy as np
 
 plt.rcParams.update({'font.size': 22})
 diff_coord = pd.read_fwf('diffusedata.txt')
-det_coord = pd.read_fwf('detection.txt')
+det_coord = pd.read_fwf('detections.txt')
 vel = pd.read_fwf('velocity.txt')
-ang = pd.read_fwf('angles.txt')
+ang = pd.read_fwf('vlsr.txt')
 diff_long = np.array(diff_coord[diff_coord.columns[0]])
 diff_lat = np.array(diff_coord[diff_coord.columns[1]])
 det_long = np.array(det_coord[det_coord.columns[0]])
