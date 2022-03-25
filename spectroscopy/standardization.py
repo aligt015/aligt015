@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #############################################################################
-# Question 1
+# Values are hard coded below.
 #############################################################################
 
 xb1, xb2 = 1.05, 2.13 #b_1 and b_2 airmass
@@ -38,7 +38,6 @@ v2 = np.array([9.427, 9.739, 9.425, 10.001])#v_2 column
 
 # extinction coeffs
 kv = np.polyfit(BV, (v2 - v1)/xv, 1)
-print('kv is: ', kv)
 
 # plot the best-fit and data
 plt.subplot(222)
@@ -50,7 +49,7 @@ plt.plot(xdense2, modelpoints, 'b-', label = b_label2)
 plt.legend()
 
 #############################################################################
-# Question 2
+# Derive the extinction corrected magnitudes
 #############################################################################
 
 #extinction corrected magnitudes
@@ -71,8 +70,6 @@ v_st = np.concatenate([v_st_array[0], v_st_array[1]])
 ab1, ab0 = np.polyfit(BV2, b_st, 1)
 av1, av0 = np.polyfit(BV2, v_st, 1)
 
-print('yo is: ', ab1, ab0, av1, av0)
-
 plt.subplot(223)
 plt.plot(BV2, b_st, 'ro', label = 'B-band')
 b_label3 = f'y = {ab1:.4f}x + {ab0:.4f}'
@@ -85,13 +82,6 @@ b_label4 = f'y = {av1:.4f}x + {av0:.4f}'
 plt.plot(xdense2, np.polyval([av1, av0], xdense2),'b-', label = b_label4)
 plt.legend()
 
-#############################################################################
-# Question 3
-#############################################################################
-
-#print(kb[0], kb[1], kv[0], kv[1], ab1, ab0, av1, av0)
-
-#I will use the formula given to us in the lecture notes
 b = 10.899
 v = 9.850
 airmass = 1.5
@@ -114,11 +104,9 @@ v_value = mv + av0
 #############################################################################
 
 BV = -(b_value - v_value)/(1 - (ab1-av1))
-print('B-V for question 3 is: ', BV)
 
 #Now since we know (B-V) we can just plug into our equation and solve for V
 V = v - (kv[1] + kv[0]*BV)*airmass
-print('V for questin 3 is: ', V)
 
 
 
