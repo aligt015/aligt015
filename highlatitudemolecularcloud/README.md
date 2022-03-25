@@ -1,5 +1,7 @@
-This project consists of identifying large scale trends on how the high latitude molecular clouds are moving. The detections were surveyed in the CO (1-0) transition at
-115 GHz. Identifying large scale trends is interesting since there might be systematic motions that might tell us where these clouds came from, for example, if the detected points all move in the same velocity and line widths, may imply that the clouds formed in the same event. To represent the line widths, a blue line was used in every detected point, where the higher the line width corresponds to wider blue lines which is shown in the image trends.png. To represent the velocities, an angle was used where θ = arcsin(LSR/15). This angle is represented by the same blue line used for the line width but as you can see in the trends.png image some of the detected points are rotated at an angle.
+This project consists of identifying large scale trends for the high latitude molecular clouds. The detections were surveyed in the CO (1-0) transition at
+115 GHz. Identifying large scale trends is interesting since there might be systematic motions that might tell us where these clouds came from, for example, if the detected points all move in the same velocity and line widths, this may imply that the clouds formed in the same event. 
+
+To represent the line widths, a blue line was used in every detected point, where the wider the line width corresponds to wider blue lines which is shown in the image trends.png. To represent the velocities, an angle was used where θ = arcsin(LSR/15). This angle is represented by the same blue line used for the line width but as you can see in the trends.png image some of the detected points are rotated at an angle.
 
 The files in this project are:
 
