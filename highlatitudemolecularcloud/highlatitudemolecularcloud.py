@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
+# Instead of opening multiple files, it is better to consolidate the data into fewer files if possible.
 plt.rcParams.update({'font.size': 22})
 diff_coord = pd.read_fwf('diffusedata.txt')
 det_coord = pd.read_fwf('detections.txt')
