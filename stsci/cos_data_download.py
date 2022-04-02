@@ -16,3 +16,17 @@ rawtag_product_list = np.where((product_list['productSubGroupDescription'] == 'R
 print(product_list[rawtag_product_list])
 
 downloads = Observations.download_products(product_list[rawtag_product_list], download_dir=str(data_dir) , extension='fits', mrp_only=False, cache=False)
+
+# More robust way of achieving the same results
+onecell_x1dsum_data_products = Observations.download_products(
+    Observations.filter_products(
+        Observations.get_product_list(
+            Observations.query_criteria(
+                obs_id="LDLM40010"
+            )
+        ),
+        # Only downloads the 1 dimensional extracted spectrum
+        productSubGroupDescription="RAWTAG_A" #notice here RAWTAG_B is not included. Well, it should, but I am not sure how to include both. Will need to play around with this some more.
+    ),
+    download_dir=str(data_dir) , extension='fits', mrp_only=False, cache=False
+)
