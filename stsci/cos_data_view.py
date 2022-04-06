@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 
-#################################### Exercise 2 #############################################
+#################################### Exercise 1 #############################################
 
 # data directory we are going to place in our downloaded files.
 data_dir = Path('./data/')
