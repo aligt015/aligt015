@@ -61,7 +61,7 @@ nRows = 5  # How many segments we wish to split the spectrum into
 wvln, flux, fluxErr, segment = fuv_x1d_data[0]["WAVELENGTH", "FLUX", "ERROR", "SEGMENT"]
 
 # We want only wavelength range from 1635 - 1675.
-rangewv = np.where(np.logical_and(wvln >= 1635, wvln <= 1675)) # Or you could do: rangewv = (wvln > minx) & (wvln < maxx)
+rangewv = np.where(np.logical_and(wvln >= 1635, wvln <= 1675)) # Or you could do: rangewv = (wvln > 1635) & (wvln < 1675)
 rangewvln, rangeflux, rangeerr = wvln[rangewv], flux[rangewv], fluxErr[rangewv]
 minx, maxx = min(rangewvln), max(rangewvln)
 rangex = maxx - minx
