@@ -61,7 +61,7 @@ nRows = 5  # How many segments we wish to split the spectrum into
 wvln, flux, fluxErr, segment = fuv_x1d_data[0]["WAVELENGTH", "FLUX", "ERROR", "SEGMENT"]
 
 # We want only wavelength range from 1635 - 1675.
-rangewv = np.where(np.logical_and(wvln >= 1635, wvln <= 1675))
+rangewv = np.where(np.logical_and(wvln >= 1635, wvln <= 1675)) # Or you could do: rangewv = (wvln > minx) & (wvln < maxx)
 rangewvln, rangeflux, rangeerr = wvln[rangewv], flux[rangewv], fluxErr[rangewv]
 minx, maxx = min(rangewvln), max(rangewvln)
 rangex = maxx - minx
@@ -81,8 +81,7 @@ for i in range(nRows):
         ax.set_ylabel('Flux [$erg\ s^{-1}\ cm^{-2}\ Angstrom^{-1}$]', size=30)
 
     # Create the plot itself
-    ax.errorbar(rangewvln, rangeflux, rangeerr, c=plt.cm.rainbow((i+1)/nRows), alpha=0.8,
-                marker='.', markerfacecolor='k', markersize=2, mew=0)
+    ax.errorbar(rangewvln, rangeflux, rangeerr, c=plt.cm.rainbow((i+1)/nRows), alpha=0.8, marker='.', markerfacecolor='k', markersize=2, mew=0)
 
     ax.set_xlim(min_, max_)
 plt.tight_layout()
