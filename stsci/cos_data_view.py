@@ -54,3 +54,36 @@ ax.set_ylabel('Flux [$erg\ s^{-1}\ cm^{-2}\ Angstrom^{-1}$]', size=12)
 plt.legend(loc='upper right')
 plt.tight_layout()
 plt.show()
+
+#################################### Exercise 3 #############################################
+
+nRows = 5  # How many segments we wish to split the spectrum into
+wvln, flux, fluxErr, segment = fuv_x1d_data[0]["WAVELENGTH", "FLUX", "ERROR", "SEGMENT"]
+
+# We want only wavelength range from 1635 - 1675.
+rangewv = np.where(np.logical_and(wvln >= 1635, wvln <= 1675))
+rangewvln, rangeflux, rangeerr = wvln[rangewv], flux[rangewv], fluxErr[rangewv]
+minx, maxx = min(rangewvln), max(rangewvln)
+rangex = maxx - minx
+
+fig = plt.figure(figsize=(14, 20))
+
+for i in range(nRows):
+    min_ = minx + i*rangex/nRows
+    max_ = minx + (i+1)*rangex/nRows
+    ax = plt.subplot(nRows, 1, i+1)
+
+    if i == 0:  # A way to set Title, xlabel, and ylabel that will work independent of number of rows
+        ax.set_title(f"Fig. 2.4{segment[-1]} \nSegment {segment} Spectrum split into segments", size=30)
+    if i == nRows - 1:
+        ax.set_xlabel("Wavelength [$\AA$]", size=30)
+    if i == int(nRows/2):
+        ax.set_ylabel('Flux [$erg\ s^{-1}\ cm^{-2}\ Angstrom^{-1}$]', size=30)
+
+    # Create the plot itself
+    ax.errorbar(rangewvln, rangeflux, rangeerr, c=plt.cm.rainbow((i+1)/nRows), alpha=0.8,
+                marker='.', markerfacecolor='k', markersize=2, mew=0)
+
+    ax.set_xlim(min_, max_)
+plt.tight_layout()
+plt.show()
