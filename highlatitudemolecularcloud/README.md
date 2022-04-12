@@ -3,6 +3,8 @@ This project consists of identifying large scale trends for the high latitude mo
 
 To represent the line widths, a blue line was used in every detected point, where the wider the line width corresponds to wider blue lines which is shown in the image trends.png. To represent the velocities, an angle was used where θ = arcsin(LSR/15). This angle is represented by the same blue line used for the line width but as you can see in the trends.png image some of the detected points are rotated at an angle.
 
+The region of cloud we are interested are low density with simple chemistry e.g. diatomic's OH, CH, NH, C2, CO, etc. The data given for this project uses CO.
+
 The files in this project are:
 
 1. gridpoints.txt file is all the positions that were observed. They number about 15,000 with roughly 10,000 in the Northern Galactic Hemisphere and 5,000 in the South. The first column is corresponds to the galactic longtitude while the second column is the galactic latitude.
