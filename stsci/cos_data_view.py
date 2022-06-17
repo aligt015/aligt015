@@ -103,3 +103,28 @@ plt.title("Exercise 3.1", size=25)
 plt.xlabel('Wavelength [$\AA$]', size=20)
 plt.ylabel('Flux [$erg\ s^{-1}\ cm^{-2}\ Angstrom^{-1}$]', size=15)
 plt.tight_layout()
+
+#################################### Exercise 3.2 #############################################
+
+from cos_functions import bin_by_resel
+from cos_functions import estimate_snr
+
+res_size = 3  
+meanSNR_range3400_3500, range3400_3500 = estimate_snr(
+    nuv_x1d_data, bin_data_first=True, binsize_=res_size, snr_range=[3400, 3500])
+
+plt.figure(figsize=(12, 8))
+
+wvln_over_range, snr_over_range = range3400_3500[1][0], range3400_3500[1][1]
+
+plt.plot(wvln_over_range, snr_over_range, c='#466599',
+         marker='.', markersize=8, markerfacecolor='k',
+         label=f"SNR Binned by Resel size {res_size}")
+plt.axhline(meanSNR_range3400_3500, c='r', linestyle='-.', linewidth=4,
+            label="Mean SNR over the Region")
+
+plt.legend(fontsize=20)
+plt.title("Fig. 3.5\nResults of SNR Calculation by Wavelength", size=30)
+plt.xlabel('Wavelength [$\AA$]', size=20)
+plt.ylabel('SNR', size=20)
+plt.tight_layout()
