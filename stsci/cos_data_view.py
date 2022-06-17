@@ -55,7 +55,7 @@ plt.legend(loc='upper right')
 plt.tight_layout()
 plt.show()
 
-#################################### Exercise 3 #############################################
+#################################### Exercise 2.1 #############################################
 
 nRows = 5  # How many segments we wish to split the spectrum into
 wvln, flux, fluxErr, segment = fuv_x1d_data[0]["WAVELENGTH", "FLUX", "ERROR", "SEGMENT"]
@@ -86,3 +86,20 @@ for i in range(nRows):
     ax.set_xlim(min_, max_)
 plt.tight_layout()
 plt.show()
+
+#################################### Exercise 3.1 #############################################
+
+plt.figure(figsize=(12, 6))
+for i in range(2):
+    wvln, flux, fluxErr, dataQual, segment = nuv_x1d_data[i]["WAVELENGTH"], nuv_x1d_data[i]["FLUX"],\
+        nuv_x1d_data[i]["ERROR"], nuv_x1d_data[i]["DQ"], nuv_x1d_data[i]["SEGMENT"]
+
+    plt.plot(wvln[dataQual == 0], flux[dataQual == 0], linewidth=1, alpha=0.8,
+             label=f"{segment} Cleaned")
+    plt.scatter(wvln[dataQual != 0], flux[dataQual != 0], s=[12, 4][i], c='r', alpha=1,
+                label=f"{segment} Pix out-of-bounds")
+plt.legend(fontsize=18)
+plt.title("Exercise 3.1", size=25)
+plt.xlabel('Wavelength [$\AA$]', size=20)
+plt.ylabel('Flux [$erg\ s^{-1}\ cm^{-2}\ Angstrom^{-1}$]', size=15)
+plt.tight_layout()
